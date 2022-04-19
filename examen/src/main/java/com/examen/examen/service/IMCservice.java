@@ -7,17 +7,16 @@ import org.springframework.stereotype.Service;
 @Service
 @Profile("imc")
 public class IMCservice implements Operacion{
-    Data datos = new Data();
-
-    int peso = Integer.parseInt(datos.getData1());
-    int altura = Integer.parseInt(datos.getData2());
 
     public String getOperacion(Data datos){
         String[] categorias = {"Obesidad", "Peso superior al normal", "Peso inferior al normal", "Normal"};
 
-        int opcion = 0;
-        int IMC = 0;
-        IMC = peso / altura;
+        double peso = Double.parseDouble(datos.getData1());
+        double altura = Double.parseDouble(datos.getData2());
+
+        int opcion = 1;
+        double IMC = 0;
+        IMC = peso / (altura*altura);
 
         if(IMC>30){
             opcion = 0;
@@ -30,4 +29,10 @@ public class IMCservice implements Operacion{
         }
         return categorias[opcion];
     }
+
+    public double CalcularIMC(Data data){
+        double IMC = Double.parseDouble(data.getData1()) / (Double.parseDouble(data.getData2())*Double.parseDouble(data.getData2()));
+        return IMC;
+    }
+
 }

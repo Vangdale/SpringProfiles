@@ -15,7 +15,6 @@ public class SpringBootController {
     @Autowired
     Operacion op;
 
-
     @GetMapping("/")
     public ModelAndView welcome(){
 
@@ -24,7 +23,7 @@ public class SpringBootController {
 
     @PostMapping("index")
         public ModelAndView index(Data datos){
-            ModelAndView modelAndView = new ModelAndView("Index");
+            ModelAndView modelAndView = new ModelAndView("index");
             modelAndView.addObject("mensaje", op.getOperacion(datos));
             return modelAndView;
         }

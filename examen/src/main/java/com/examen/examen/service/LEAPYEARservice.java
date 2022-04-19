@@ -8,15 +8,11 @@ import org.springframework.stereotype.Service;
 @Profile("leapyear")
 public class LEAPYEARservice implements Operacion{
 
-    Data datos = new Data();
-    int año = Integer.parseInt(datos.getData1());
-
-
     public String getOperacion(Data datos){
-        int resto= 0;
+        int year = Integer.parseInt(datos.getData1());
         int opcion;
         String[] bisiesto = {"Es bisiesto", "No es bisiesto"};
-        if(año == año%4){
+        if(0 == year%4){
             opcion = 0;
         }else{
             opcion = 1;
@@ -25,4 +21,15 @@ public class LEAPYEARservice implements Operacion{
         return bisiesto[opcion];
     }
 
+    public String getBisiesto(int year){
+        int opcion;
+        String[] bisiesto = {"Es bisiesto", "No es bisiesto"};
+        if(0 == year%4){
+            opcion = 0;
+        }else{
+            opcion = 1;
+        }
+
+        return bisiesto[opcion];
+    }
 }
